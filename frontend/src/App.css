@@ -1,11 +1,13 @@
-/* Global Styles */
+/* =========================================
+   MEDPORTAL - GLOBAL STYLES & THEME SYSTEM
+   ========================================= */
+
 :root {
   --primary-color: #4169E1;
   --secondary-color: #90EE90;
   --text-color: #333;
   --bg-color: #f0f2f5;
   --header-height: 70px;
-  /* Increased nicely */
   --site-max-width: 1200px;
   --site-padding: 20px;
 }
@@ -20,7 +22,6 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   overflow-x: hidden;
-  /* Prevent horizontal scroll */
 }
 
 /* ================= HEADER ================= */
@@ -43,7 +44,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Ensure proper spacing */
   width: 100%;
   max-width: var(--site-max-width);
   height: 100%;
@@ -65,11 +65,9 @@ body {
 
 .header-center {
   display: flex;
-  /* Flex to center nav and search */
   align-items: center;
   justify-content: center;
   flex: 1;
-  /* Take up available space */
   gap: 20px;
 }
 
@@ -153,7 +151,6 @@ body {
 /* ================= HERO & HOME START ================= */
 .home-container {
   padding-top: calc(var(--header-height) + 40px);
-  /* Clear fixed header */
   padding-left: var(--site-padding);
   padding-right: var(--site-padding);
   padding-bottom: 60px;
@@ -189,7 +186,6 @@ body {
 .home-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  /* Equal width columns */
   gap: 30px;
   width: 100%;
   justify-content: center;
@@ -200,7 +196,6 @@ body {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  /* Softer shadow */
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid transparent;
@@ -234,7 +229,6 @@ body {
   padding: 60px 0 20px;
   width: 100%;
   margin-top: auto;
-  /* Push to bottom if content is short */
 }
 
 .footer-content {
@@ -246,7 +240,6 @@ body {
 .footer-columns {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* Force 4 even columns */
   gap: 30px;
   padding-bottom: 40px;
   border-bottom: 1px solid #34495e;
@@ -348,413 +341,6 @@ body {
   text-align: center;
 }
 
-/* Recycled modal styles... simpler to keep inline or extract if huge */
-.close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  color: #bdc3c7;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-.card-header h2 {
-  margin-top: 0;
-  color: #fff;
-}
-
-.social-login-row {
-  display: flex;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.social-btn {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-  transition: transform 0.2s;
-}
-
-.social-btn:hover {
-  transform: translateY(-2px);
-}
-
-.google-btn {
-  background-color: white;
-  color: #DB4437;
-}
-
-.facebook-btn {
-  background-color: #1877F2;
-}
-
-.linkedin-btn {
-  background-color: #0077b5;
-}
-
-.apple-btn {
-  background-color: #000;
-}
-
-.microsoft-btn {
-  background-color: #2F2F2F;
-  color: #00A4EF;
-}
-
-.divider {
-  margin: 20px 0;
-  position: relative;
-}
-
-.divider::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #3e4c59;
-}
-
-.divider span {
-  background-color: #1d2a35;
-  padding: 0 10px;
-  position: relative;
-  color: #bdc3c7;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.password-input-wrapper input {
-  width: 100%;
-}
-
-.forgot-link,
-.signup-link {
-  color: var(--secondary-color);
-  text-decoration: none;
-  font-size: 14px;
-}
-
-
-/* ================= RESPONSIVE DESIGN ================= */
-@media screen and (max-width: 992px) {
-  .search-container {
-    display: none;
-  }
-
-  .footer-columns {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 5px;
-  }
-
-  /* Hide Desktop Nav and Search on Mobile */
-  .nav-menu,
-  .search-container,
-  .header-center {
-    display: none;
-  }
-
-  /* Ensure Logo is visible and centered or left-aligned as needed */
-  .header-inner {
-    justify-content: space-between;
-  }
-
-  .home-container {
-    padding-top: 100px;
-  }
-
-  .hero-section h1 {
-    font-size: 2rem;
-  }
-
-  .footer-columns {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .bottom-container {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .header-right .icon-link {
-    display: none;
-  }
-
-  /* Sign In button might be hidden if it's in drawer, or kept. 
-     User requested drawer has "Login/Sign Up", so we can hide header button on mobile to save space */
-  .header-right .btn-login {
-    display: none;
-  }
-}
-
-* {
-  box-sizing: border-box;
-  /* Global Box Sizing Reset */
-}
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
-
-/* Header Styles */
-.site-header {
-  background-color: var(--primary-color);
-  color: white;
-  height: var(--header-height);
-  display: flex;
-  justify-content: center;
-  /* Center the inner container */
-  padding: 0 20px;
-  /* Standardized to 20px */
-  position: fixed;
-  top: 0;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  /* Centered content max-width */
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-}
-
-/* ... rest of header styles ... */
-
-/* Home Page Responsive Grid */
-.home-container {
-  padding-top: 80px;
-  /* Adjusted for header */
-  min-height: 80vh;
-  padding-left: 20px;
-  /* Standardized to 20px */
-  padding-right: 20px;
-  /* Standardized to 20px */
-  max-width: 1200px;
-  /* Limit width */
-  margin: 0 auto;
-  /* Center container */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* Horizontally center everything */
-}
-
-.hero-section {
-  text-align: center;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  max-width: 800px;
-}
-
-.hero-section h1 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-bottom: 10px;
-}
-
-.hero-section p {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-.home-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: 1px;
-}
-
-.header-center {
-  display: flex;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.nav-menu {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item {
-  position: relative;
-  margin-right: 5px;
-}
-
-.nav-link {
-  color: white;
-  text-decoration: none;
-  padding: 0 15px;
-  line-height: 60px;
-  display: inline-block;
-  font-size: 15px;
-  transition: background-color 0.3s;
-}
-
-.nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.nav-link::after {
-  content: " \25BC";
-  font-size: 10px;
-  margin-left: 5px;
-}
-
-/* Dropdown */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  background-color: #fff;
-  min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1001;
-  list-style: none;
-  padding: 0;
-  border-radius: 0 0 4px 4px;
-}
-
-.nav-item:hover .dropdown-menu {
-  display: block;
-}
-
-.dropdown-link {
-  color: #333;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-size: 14px;
-}
-
-.dropdown-link:hover {
-  background-color: #f1f1f1;
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 5px 15px;
-  margin-left: auto;
-  margin-right: 20px;
-  width: 300px;
-}
-
-.search-input {
-  border: none;
-  outline: none;
-  flex-grow: 1;
-  font-size: 14px;
-}
-
-.search-icon {
-  color: #555;
-  cursor: pointer;
-}
-
-/* Header Right */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.icon-link {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  transition: opacity 0.3s;
-}
-
-.icon-link:hover {
-  opacity: 0.8;
-}
-
-.btn-login {
-  background-color: var(--secondary-color);
-  color: #000;
-  padding: 8px 20px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.btn-login:hover {
-  background-color: #7CFC00;
-}
-
-/* Modal Styles */
-.modal-overlay {
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 2000;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(5px);
-}
-
-.auth-card {
-  background-color: #1d2a35;
-  padding: 40px;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  position: relative;
-  color: white;
-  text-align: center;
-}
-
 .close-btn {
   position: absolute;
   top: 15px;
@@ -846,7 +432,6 @@ input {
   border: 1px solid #3e4c59;
   background-color: #f0f2f5;
   color: #333;
-  box-sizing: border-box;
 }
 
 .primary-btn {
@@ -872,46 +457,14 @@ input {
   font-size: 14px;
 }
 
-/* Footer Styles */
-.medical-footer {
-  background-color: #1d2a35;
-  color: #ecf0f1;
-  padding: 60px 0 20px;
-  margin-top: 50px;
-}
-
-/* Home Page Responsive Grid */
-.home-container {
-  padding-top: 100px;
-  text-align: center;
-  min-height: 60vh;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.home-grid {
-  margin-top: 50px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  /* Key fix for responsiveness */
-}
-
-.home-card {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  width: 250px;
-  background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive Design */
+/* ================= RESPONSIVE DESIGN ================= */
 @media screen and (max-width: 992px) {
   .search-container {
     display: none;
-    /* Hide search on medium screens to save space */
+  }
+
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -923,136 +476,41 @@ input {
     padding: 5px;
   }
 
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background-color: var(--primary-color);
-    padding: 10px 0;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-
-  .nav-menu.active {
-    display: flex;
-  }
-
-  .nav-item {
-    margin: 0;
-    width: 100%;
-    text-align: left;
-  }
-
-  .nav-link {
-    display: block;
-    padding: 15px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
+  /* Hide Desktop Nav and Search on Mobile */
+  .nav-menu,
+  .search-container,
   .header-center {
-    /* Allow header center to not take full width so logo + toggle + auth fit */
-    flex-grow: 0;
-  }
-
-  .header-right .icon-link {
     display: none;
-    /* Hide extra links on mobile */
   }
 
-  /* Adjust Home Grid for Mobile */
-  .home-card {
-    width: 90%;
-    /* Full width on mobile */
-    max-width: 300px;
+  /* Ensure Logo is visible and centered or left-aligned as needed */
+  .header-inner {
+    justify-content: space-between;
   }
 
-  /* Footer Stack */
+  .home-container {
+    padding-top: 100px;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
   .footer-columns {
     grid-template-columns: 1fr;
-    /* Single column footer */
     text-align: center;
   }
 
   .bottom-container {
     flex-direction: column;
-    justify-content: center;
+    gap: 20px;
   }
-}
 
-.footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+  .header-right .icon-link {
+    display: none;
+  }
 
-.footer-columns {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 30px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid #34495e;
-}
-
-.footer-column h3 {
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-column ul li a {
-  color: #bdc3c7;
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-
-.footer-column ul li a:hover {
-  color: var(--secondary-color);
-}
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 30px auto 0;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.bottom-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.brand-info {
-  display: flex;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.social-icons {
-  display: flex;
-  gap: 15px;
-}
-
-.social-icons a {
-  color: white;
-  font-size: 18px;
-}
-
-.social-icons a:hover {
-  color: var(--secondary-color);
+  .header-right .btn-login {
+    display: none;
+  }
 }
