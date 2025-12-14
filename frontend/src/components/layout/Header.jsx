@@ -13,11 +13,10 @@ const Header = ({ onOpenSignin }) => {
     return (
         <header className="site-header">
             <div className="header-inner">
-                <div className="menu-toggle" onClick={toggleMenu}>
-                    <FaBars />
-                </div>
-
                 <div className="header-left">
+                    <div className="menu-toggle" onClick={toggleMenu}>
+                        <FaBars />
+                    </div>
                     <Link to="/" className="logo">MEDPORTAL</Link>
                 </div>
 
@@ -27,10 +26,7 @@ const Header = ({ onOpenSignin }) => {
                         <ul className="nav-menu">
                             <li className="nav-item">
                                 <Link to="#" className="nav-link">Main Portal</Link>
-                                <ul className="dropdown-menu">
-                                    <li><Link to="#" className="dropdown-link">Dashboard</Link></li>
-                                    <li><Link to="#" className="dropdown-link">Profile</Link></li>
-                                </ul>
+
                             </li>
                             <li className="nav-item">
                                 <Link to="#" className="nav-link">Pharma</Link>
