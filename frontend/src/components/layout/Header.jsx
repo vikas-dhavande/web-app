@@ -25,30 +25,27 @@ const Header = ({ onOpenSignin }) => {
                         {/* Desktop Menu - Hidden on Mobile via CSS */}
                         <ul className="nav-menu">
                             <li className="nav-item">
-                                <Link to="#" className="nav-link">Main Portal</Link>
-
+                                <Link to="#" className="nav-link">Hospitals</Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="#" className="nav-link">Pharma</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="#" className="nav-link">Hospitals</Link>
+                                <Link to="#" className="nav-link">Colleges</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="#" className="nav-link">Colleges</Link>
+                                <Link to="#" className="nav-link">Blog</Link>
                             </li>
                         </ul>
                     </nav>
 
                     <div className="search-container">
-                        <input type="text" className="search-input" placeholder="Search..." />
+                        <input type="text" className="search-input" placeholder="Search hospitals, medicines, colleges…" />
                         <FaSearch className="search-icon" />
                     </div>
                 </div>
 
                 <div className="header-right">
-                    <Link to="#" className="icon-link">Spaces</Link>
-                    <Link to="#" className="icon-link">For Doctors</Link>
                     <button className="btn-login" onClick={onOpenSignin}>Sign In</button>
                 </div>
             </div>
