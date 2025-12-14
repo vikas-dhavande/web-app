@@ -20,9 +20,10 @@ app.get('/', (req, res) => {
     res.send('API is running...');
 });
 
-// Import Routes (Placeholders)
-// const authRoutes = require('./src/modules/core/authRoutes');
-// app.use('/api/auth', authRoutes);
+// Import Routes
+const authRoutes = require('./src/modules/core/routes/authRoutes');
+
+app.use('/api/auth', authRoutes);
 
 const PORT = process.env.PORT || 5000;
 

@@ -7,6 +7,11 @@
   --header-height: 60px;
 }
 
+* {
+  box-sizing: border-box;
+  /* Global Box Sizing Reset */
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,8 +25,10 @@ body {
   color: white;
   height: var(--header-height);
   display: flex;
-  align-items: center;
-  padding: 0 15px;
+  justify-content: center;
+  /* Center the inner container */
+  padding: 0 20px;
+  /* Standardized to 20px */
   position: fixed;
   top: 0;
   width: 100%;
@@ -30,10 +37,65 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.header-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  /* Centered content max-width */
+}
+
 .header-left {
   display: flex;
   align-items: center;
   margin-right: 20px;
+}
+
+/* ... rest of header styles ... */
+
+/* Home Page Responsive Grid */
+.home-container {
+  padding-top: 80px;
+  /* Adjusted for header */
+  min-height: 80vh;
+  padding-left: 20px;
+  /* Standardized to 20px */
+  padding-right: 20px;
+  /* Standardized to 20px */
+  max-width: 1200px;
+  /* Limit width */
+  margin: 0 auto;
+  /* Center container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Horizontally center everything */
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  max-width: 800px;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.home-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .logo {
@@ -320,6 +382,107 @@ input {
   color: #ecf0f1;
   padding: 60px 0 20px;
   margin-top: 50px;
+}
+
+/* Home Page Responsive Grid */
+.home-container {
+  padding-top: 100px;
+  text-align: center;
+  min-height: 60vh;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.home-grid {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  /* Key fix for responsiveness */
+}
+
+.home-card {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 250px;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+  .search-container {
+    display: none;
+    /* Hide search on medium screens to save space */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    padding: 10px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-item {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .header-center {
+    /* Allow header center to not take full width so logo + toggle + auth fit */
+    flex-grow: 0;
+  }
+
+  .header-right .icon-link {
+    display: none;
+    /* Hide extra links on mobile */
+  }
+
+  /* Adjust Home Grid for Mobile */
+  .home-card {
+    width: 90%;
+    /* Full width on mobile */
+    max-width: 300px;
+  }
+
+  /* Footer Stack */
+  .footer-columns {
+    grid-template-columns: 1fr;
+    /* Single column footer */
+    text-align: center;
+  }
+
+  .bottom-container {
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .footer-content {

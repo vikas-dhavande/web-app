@@ -4,11 +4,46 @@ import { FaTimes, FaGoogle, FaFacebookF, FaLinkedinIn, FaApple, FaWindows, FaEye
 const SignInModal = ({ isOpen, onClose }) => {
     const [showPassword, setShowPassword] = useState(false);
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
     if (!isOpen) return null;
 
     const handleOverlayClick = (e) => {
         if (e.target.className === 'modal-overlay') {
             onClose();
+        }
+    };
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError('');
+
+        try {
+            const res = await fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                alert(`Welcome back, ${data.name}!`); // Temporary success feedback
+                onClose();
+                // Here we would store the token in context/localStorage
+            } else {
+                setError(data.message || 'Login failed');
+            }
+        } catch (err) {
+            setError('Network error. Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -36,13 +71,27 @@ const SignInModal = ({ isOpen, onClose }) => {
 
                 <div className="divider"><span>or</span></div>
 
-                <form onSubmit={(e) => e.preventDefault()}>
+                {error && <div style={{ color: '#ff6b6b', marginBottom: '10px', fontSize: '14px' }}>{error}</div>}
+
+                <form onSubmit={handleLogin}>
                     <div className="form-group">
-                        <input type="email" placeholder="Email" required />
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </div>
                     <div className="form-group">
                         <div className="password-input-wrapper" style={{ position: 'relative' }}>
-                            <input type={showPassword ? "text" : "password"} placeholder="Password" required />
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Password"
+                                required
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
                             <FaEye
                                 className="toggle-password"
                                 onClick={() => setShowPassword(!showPassword)}
@@ -53,8 +102,8 @@ const SignInModal = ({ isOpen, onClose }) => {
                     <div className="forgot-container" style={{ textAlign: 'right', marginBottom: '10px' }}>
                         <a href="#" className="forgot-link">Forgot your password?</a>
                     </div>
-                    <button type="submit" className="primary-btn">
-                        <span className="btn-text">Sign In</span>
+                    <button type="submit" className="primary-btn" disabled={loading}>
+                        <span className="btn-text">{loading ? 'Signing In...' : 'Sign In'}</span>
                     </button>
                 </form>
             </div>
