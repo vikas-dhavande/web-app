@@ -462,39 +462,16 @@ body {
     padding: 5px;
   }
 
+  /* Hide Desktop Nav and Search on Mobile */
+  .nav-menu,
+  .search-container,
   .header-center {
-    position: absolute;
-    top: var(--header-height);
-    left: 0;
-    width: 100%;
-    background-color: var(--primary-color);
-    flex-direction: column;
-    padding: 20px 0;
     display: none;
-    /* Hidden by default */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
-  .header-center.active {
-    display: flex;
-  }
-
-  .nav-menu {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .nav-item {
-    margin: 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-link {
-    display: block;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
+  /* Ensure Logo is visible and centered or left-aligned as needed */
+  .header-inner {
+    justify-content: space-between;
   }
 
   .home-container {
@@ -516,6 +493,12 @@ body {
   }
 
   .header-right .icon-link {
+    display: none;
+  }
+
+  /* Sign In button might be hidden if it's in drawer, or kept. 
+     User requested drawer has "Login/Sign Up", so we can hide header button on mobile to save space */
+  .header-right .btn-login {
     display: none;
   }
 }

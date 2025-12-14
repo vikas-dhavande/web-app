@@ -1,4 +1,6 @@
-const User = require('../models/User');
+// MOCK DB MODE ENABLED (No MongoDB required)
+const User = require('../models/UserMock');
+// const User = require('../models/User'); // Original MongoDB Model
 const jwt = require('jsonwebtoken');
 
 // Generate JWT

@@ -6,8 +6,9 @@ const connectDB = require('./src/config/db');
 // Load config
 dotenv.config();
 
-// Connect to Database
-connectDB();
+// Connect Database (Skipped for Mock Mode)
+// connectDB();
+console.log('Mock Database Mode: Using local JSON file for persistence');
 
 const app = express();
 

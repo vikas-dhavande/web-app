@@ -1,0 +1,10 @@
+[
+  {
+    "_id": "i5a07pfn9",
+    "name": "Admin User",
+    "email": "admin@medportal.com",
+    "password": "$2b$10$q5HvGch5PTmkB/Fgllr2We3kLjtzE8DIPESVEu/aaKbNDWdd0HQjO",
+    "role": "Admin",
+    "createdAt": "2025-12-14T15:17:55.525Z"
+  }
+]
