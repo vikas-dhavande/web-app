@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/vikas-dhavande/web-app/issues"
   },
-  "homepage": "https://github.com/vikas-dhavande/web-app#readme"
+  "homepage": "https://github.com/vikas-dhavande/web-app#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }
