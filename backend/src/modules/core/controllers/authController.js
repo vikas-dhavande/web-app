@@ -27,7 +27,8 @@ const registerUser = async (req, res) => {
             name,
             email,
             password,
-            role: role || 'User',
+            roles: role ? [role] : ['Patient'],
+            profileStatus: 'new'
         });
 
         if (user) {
@@ -35,7 +36,8 @@ const registerUser = async (req, res) => {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
-                role: user.role,
+                roles: user.roles,
+                profileStatus: user.profileStatus,
                 token: generateToken(user._id),
             });
         } else {
@@ -60,7 +62,8 @@ const loginUser = async (req, res) => {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
-                role: user.role,
+                roles: user.roles,
+                profileStatus: user.profileStatus,
                 token: generateToken(user._id),
             });
         } else {

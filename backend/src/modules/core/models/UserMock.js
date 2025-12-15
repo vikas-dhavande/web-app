@@ -19,7 +19,8 @@ class UserMock {
         this.name = data.name;
         this.email = data.email;
         this.password = data.password;
-        this.role = data.role || 'User';
+        this.roles = data.roles || ['Patient'];
+        this.profileStatus = data.profileStatus || 'new';
         this.createdAt = data.createdAt || new Date();
     }
 
