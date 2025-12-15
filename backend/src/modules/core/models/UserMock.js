@@ -56,6 +56,40 @@ class UserMock {
         return newUser;
     }
 
+    static async findById(id) {
+        const users = this._readDb();
+        const user = users.find(u => u._id === id);
+        return user ? new UserMock(user) : null;
+    }
+
+    static async findByIdAndUpdate(id, update) {
+        let users = this._readDb();
+        const index = users.findIndex(u => u._id === id);
+        if (index !== -1) {
+            users[index] = { ...users[index], ...update };
+            this._writeDb(users);
+            return new UserMock(users[index]);
+        }
+        return null;
+    }
+
+    async save() {
+        let users = UserMock._readDb();
+        const index = users.findIndex(u => u._id === this._id);
+        if (index !== -1) {
+            // Update existing
+            // Convert instance back to plain object if needed, or just specific fields
+            users[index] = { ...users[index], ...this };
+            // Note: 'this' might have extra internal properties or methods, 
+            // but JSON.stringify usually handles basic props found in constructor.
+            // Better to be explicit but for mock this is okay.
+        } else {
+            users.push(this);
+        }
+        UserMock._writeDb(users);
+        return this;
+    }
+
     async matchPassword(enteredPassword) {
         return await bcrypt.compare(enteredPassword, this.password);
     }

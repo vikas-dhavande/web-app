@@ -1,8 +1,9 @@
-import React from 'react';
+import SearchSection from '../components/home/SearchSection';
 
 const Home = () => {
     return (
         <div className="content home-container">
+            <SearchSection />
             <section className="hero-section">
                 <h1>Welcome to the Global Medical Platform</h1>
                 <p>Your unified gateway to Healthcare, Pharma, and Education.</p>

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { FaTimes, FaGoogle, FaFacebookF, FaLinkedinIn, FaApple, FaWindows, FaEye } from 'react-icons/fa';
 
+import { useNavigate } from 'react-router-dom';
+
 const SignInModal = ({ isOpen, onClose }) => {
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
     const [email, setEmail] = useState('');
@@ -34,9 +37,10 @@ const SignInModal = ({ isOpen, onClose }) => {
             const data = await res.json();
 
             if (res.ok) {
-                alert(`Welcome back, ${data.name}!`); // Temporary success feedback
+                // alert(`Welcome back, ${data.name}!`); 
+                localStorage.setItem('token', data.token); // Store token
                 onClose();
-                // Here we would store the token in context/localStorage
+                navigate('/profile');
             } else {
                 setError(data.message || 'Login failed');
             }

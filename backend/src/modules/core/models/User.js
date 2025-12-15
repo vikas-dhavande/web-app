@@ -15,10 +15,23 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    role: {
+    roles: {
+        type: [String],
+        enum: ['Admin', 'Patient', 'Doctor', 'Hospital', 'Lab', 'Pharmacy'],
+        default: ['Patient'],
+    },
+    profileStatus: {
         type: String,
-        enum: ['Admin', 'Doctor', 'HospitalAdmin', 'PharmaVendor', 'CollegeAdmin', 'User'],
-        default: 'User',
+        enum: ['new', 'incomplete', 'under_review', 'verified', 'rejected'],
+        default: 'new'
+    },
+    isEmailVerified: {
+        type: Boolean,
+        default: false
+    },
+    isPhoneVerified: {
+        type: Boolean,
+        default: false
     },
     metadata: {
         // Stores IDs for specific roles (e.g., doctorId, hospitalId)

@@ -4,6 +4,12 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import SignInModal from './components/auth/SignInModal';
+import ProfileLayout from './components/profile/ProfileLayout';
+import BasicProfile from './components/profile/BasicProfile';
+import RoleSelection from './components/profile/RoleSelection';
+import DoctorForm from './components/profile/verification/DoctorForm';
+import HospitalForm from './components/profile/verification/HospitalForm';
+import LabForm from './components/profile/verification/LabForm';
 import './App.css';
 
 function App() {
@@ -17,6 +23,16 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+
+            {/* Profile Routes */}
+            <Route path="/profile" element={<ProfileLayout />}>
+              <Route index element={<BasicProfile />} />
+              <Route path="roles" element={<RoleSelection />} />
+              <Route path="verify/doctor" element={<DoctorForm />} />
+              <Route path="verify/hospital" element={<HospitalForm />} />
+              <Route path="verify/lab" element={<LabForm />} />
+              <Route path="settings" element={<div style={{ padding: '20px', color: 'var(--text-color)' }}>Settings Placeholder</div>} />
+            </Route>
           </Routes>
         </main>
 

@@ -6,5 +6,13 @@
     "password": "$2b$10$q5HvGch5PTmkB/Fgllr2We3kLjtzE8DIPESVEu/aaKbNDWdd0HQjO",
     "role": "Admin",
     "createdAt": "2025-12-14T15:17:55.525Z"
+  },
+  {
+    "_id": "090jykpyp",
+    "name": "Test User",
+    "email": "test@example.com",
+    "password": "$2b$10$CcFtae7gqMJZEh8cOZTYbuc9W83nGP/vFO3lrK9wXf/fBrTDHW6Fe",
+    "role": "User",
+    "createdAt": "2025-12-15T15:02:03.416Z"
   }
 ]
