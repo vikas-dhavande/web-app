@@ -1,2 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Reseting default vite styles that conflict with our app */
 /* All global styles are now managed in App.css */
