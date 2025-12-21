@@ -16,7 +16,7 @@ const EShop = () => {
     }, []);
 
     return (
-        <div className="bg-[#f1f3f6] min-h-screen pt-[70px]"> {/* Adjusted background and top padding for sticky header */}
+        <div className="bg-[#f1f3f6] min-h-screen pt-[130px] md:pt-[120px] pb-10"> {/* Adjusted for new header height */}
             {/* 1. Top Header is Global now */}
 
             {/* 2. Category Navigation Bar */}

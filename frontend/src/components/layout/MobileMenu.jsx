@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-    FaUserCircle, FaTimes, FaStethoscope, FaCalendarCheck,
-    FaHospital, FaPills, FaVial, FaFileAlt, FaUniversity,
-    FaClipboardList, FaFilePrescription, FaUser, FaBell,
-    FaQuestionCircle, FaShieldAlt, FaChevronRight
+    FaUserCircle, FaTimes, FaStethoscope, FaChevronRight, FaShieldAlt
 } from 'react-icons/fa';
+import { headerConfig } from '../../config/headerConfig';
 import './MobileMenu.css';
 
 const MobileMenu = ({ isOpen, onClose, onOpenSignin }) => {
@@ -72,22 +70,11 @@ const MobileMenu = ({ isOpen, onClose, onOpenSignin }) => {
                 <div className="mobile-menu-content">
 
                     <div className="menu-section">
-                        <h4 className="section-title">Medical Services</h4>
-                        {menuItems.map((item, index) => (
-                            <Link key={index} to={item.link} className="menu-item" onClick={onClose}>
-                                <span className="menu-icon">{item.icon}</span>
-                                <span className="menu-label">{item.label}</span>
-                            </Link>
-                        ))}
-                    </div>
-
-                    <div className="menu-divider"></div>
-
-                    <div className="menu-section">
-                        <h4 className="section-title">My Account</h4>
-                        {personalItems.map((item, index) => (
-                            <Link key={index} to={item.link} className="menu-item" onClick={onClose}>
-                                <span className="menu-icon">{item.icon}</span>
+                        <h4 className="section-title">Menu</h4>
+                        {/* Map from Config */}
+                        {headerConfig?.menu?.map((item) => (
+                            <Link key={item.id} to={item.link} className="menu-item" onClick={onClose}>
+                                <span className="menu-icon"><FaChevronRight className="text-gray-400 text-xs" /></span>
                                 <span className="menu-label">{item.label}</span>
                             </Link>
                         ))}
@@ -97,12 +84,14 @@ const MobileMenu = ({ isOpen, onClose, onOpenSignin }) => {
 
                     <div className="menu-section">
                         <h4 className="section-title">Support</h4>
-                        {supportItems.map((item, index) => (
-                            <Link key={index} to={item.link} className="menu-item" onClick={onClose}>
-                                <span className="menu-icon">{item.icon}</span>
-                                <span className="menu-label">{item.label}</span>
-                            </Link>
-                        ))}
+                        <a href={`tel:${headerConfig?.contactInfo?.phone}`} className="menu-item">
+                            <span className="menu-icon"><FaStethoscope /></span>
+                            <span className="menu-label">Call Us: {headerConfig?.contactInfo?.phone}</span>
+                        </a>
+                        <a href={`mailto:${headerConfig?.contactInfo?.email}`} className="menu-item">
+                            <span className="menu-icon"><FaShieldAlt /></span>
+                            <span className="menu-label">Email: {headerConfig?.contactInfo?.email}</span>
+                        </a>
                     </div>
                 </div>
 

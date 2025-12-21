@@ -4,26 +4,33 @@
 
 :root {
   /* Light Mode (Default) */
-  --primary-color: #4169E1; /* Royal Blue - Premium Medical */
+  --primary-color: #4169E1;
+  /* Royal Blue - Premium Medical */
   --primary-dark: #2c4cb5;
-  --secondary-color: #28a745; /* Medical Green */
-  --accent-color: #ffc107; /* Warning/Highlight */
-  
-  --bg-color: #f1f3f6; /* Flipkart-style Light Gray */
+  --secondary-color: #28a745;
+  /* Medical Green */
+  --accent-color: #ffc107;
+  /* Warning/Highlight */
+
+  --bg-color: #f1f3f6;
+  /* Flipkart-style Light Gray */
   --surface-color: #ffffff;
-  
+
   --text-color: #212121;
   --text-secondary: #878787;
-  
+
   --border-color: #e0e0e0;
-  
+
   /* Header specific */
-  --header-bg: #4169E1; /* Royal Blue Background */
+  --header-bg: #4169E1;
+  /* Royal Blue Background */
   --header-text: #ffffff;
-  
-  --card-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
-  --header-height: 70px;
-  --site-max-width: 1400px; /* Wider layout */
+
+  --card-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --header-height: 120px;
+  /* Increased for Two-Row Header */
+  --site-max-width: 1440px;
+  /* Wider layout */
   --site-padding: 20px;
 }
 
