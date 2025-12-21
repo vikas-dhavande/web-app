@@ -24,9 +24,11 @@ app.get('/', (req, res) => {
 // Import Routes
 const authRoutes = require('./src/modules/core/routes/authRoutes');
 const profileRoutes = require('./src/modules/core/routes/profileRoutes');
+const statsRoutes = require('./src/modules/core/routes/statsRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/stats', statsRoutes);
 
 const PORT = process.env.PORT || 5000;
 

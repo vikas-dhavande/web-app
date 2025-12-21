@@ -11,6 +11,7 @@ import RoleSelection from './components/profile/RoleSelection';
 import DoctorForm from './components/profile/verification/DoctorForm';
 import HospitalForm from './components/profile/verification/HospitalForm';
 import LabForm from './components/profile/verification/LabForm';
+import FloatingChat from './components/FloatingChat';
 import './App.css';
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
           isOpen={isSigninOpen}
           onClose={() => setIsSigninOpen(false)}
         />
+
+        {/* Floating Chat - Visible on all pages */}
+        <FloatingChat />
       </div>
     </Router>
   );
