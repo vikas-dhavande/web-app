@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100" width="280" height="100">
+  <!-- Background -->
+  <rect width="280" height="100" fill="transparent"/>
+  
+  <!-- Caring hands element -->
+  <ellipse cx="35" cy="50" rx="18" ry="12" fill="#00a99d" opacity="0.3"/>
+  <path d="M 25 50 Q 25 40 35 40 Q 45 40 45 50" fill="none" stroke="#00a99d" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Text -->
+  <text x="70" y="48" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#00a99d">FORTIS</text>
+  <text x="70" y="68" font-family="Arial, sans-serif" font-size="16" font-weight="normal" fill="#00a99d">HEALTHCARE</text>
+</svg>

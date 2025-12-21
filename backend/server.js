@@ -25,10 +25,12 @@ app.get('/', (req, res) => {
 const authRoutes = require('./src/modules/core/routes/authRoutes');
 const profileRoutes = require('./src/modules/core/routes/profileRoutes');
 const statsRoutes = require('./src/modules/core/routes/statsRoutes');
+const partnersRoutes = require('./src/modules/core/routes/partnersRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('/api', partnersRoutes);
 
 const PORT = process.env.PORT || 5000;
 

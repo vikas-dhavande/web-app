@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" width="200" height="100">
+  <!-- Background -->
+  <rect width="200" height="100" fill="transparent"/>
+  
+  <!-- Pfizer Text -->
+  <text x="100" y="60" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#0093D0" text-anchor="middle">Pfizer</text>
+  
+  <!-- Subtle pill/capsule element -->
+  <ellipse cx="30" cy="50" rx="15" ry="8" fill="#0093D0" opacity="0.3"/>
+  <ellipse cx="170" cy="50" rx="15" ry="8" fill="#0093D0" opacity="0.3"/>
+</svg>

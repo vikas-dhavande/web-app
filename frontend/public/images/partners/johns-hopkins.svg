@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" width="300" height="120">
+  <!-- Background -->
+  <rect width="300" height="120" fill="transparent"/>
+  
+  <!-- Shield/Crest -->
+  <path d="M 40 25 L 65 30 L 65 55 Q 65 70 40 78 Q 15 70 15 55 L 15 30 Z" fill="#002d72" opacity="0.2"/>
+  
+  <!-- Text -->
+  <text x="80" y="45" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#002d72">JOHNS HOPKINS</text>
+  <text x="80" y="65" font-family="Georgia, serif" font-size="16" font-weight="normal" fill="#002d72">MEDICINE</text>
+  
+  <!-- Decorative element -->
+  <line x1="80" y1="72" x2="260" y2="72" stroke="#68ace5" stroke-width="2" opacity="0.3"/>
+</svg>

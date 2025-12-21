@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100" width="280" height="100">
+  <!-- Background -->
+  <rect width="280" height="100" fill="transparent"/>
+  
+  <!-- Heartbeat line -->
+  <polyline points="10,50 30,50 40,30 50,70 60,40 70,50 280,50" fill="none" stroke="#004B87" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Text -->
+  <text x="140" y="60" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#004B87" text-anchor="middle">MEDTRONIC</text>
+</svg>

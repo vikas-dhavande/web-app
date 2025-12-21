@@ -1,0 +1,71 @@
+{
+  "success": true,
+  "enabled": true,
+  "count": 8,
+  "data": [
+    {
+      "id": 1,
+      "name": "Apollo Hospitals",
+      "logoUrl": "/images/partners/apollo-hospitals.svg",
+      "altText": "Apollo Hospitals - Leading healthcare provider in India",
+      "category": "hospital",
+      "websiteUrl": "https://www.apollohospitals.com"
+    },
+    {
+      "id": 2,
+      "name": "Pfizer",
+      "logoUrl": "/images/partners/pfizer.svg",
+      "altText": "Pfizer - Global pharmaceutical company",
+      "category": "pharma",
+      "websiteUrl": "https://www.pfizer.com"
+    },
+    {
+      "id": 3,
+      "name": "Medtronic",
+      "logoUrl": "/images/partners/medtronic.svg",
+      "altText": "Medtronic - Medical device technology leader",
+      "category": "equipment",
+      "websiteUrl": "https://www.medtronic.com"
+    },
+    {
+      "id": 4,
+      "name": "AIIMS Delhi",
+      "logoUrl": "/images/partners/aiims.svg",
+      "altText": "All India Institute of Medical Sciences - Premier medical institution",
+      "category": "institution",
+      "websiteUrl": "https://www.aiims.edu"
+    },
+    {
+      "id": 5,
+      "name": "Fortis Healthcare",
+      "logoUrl": "/images/partners/fortis.svg",
+      "altText": "Fortis Healthcare - Integrated healthcare delivery provider",
+      "category": "hospital",
+      "websiteUrl": "https://www.fortishealthcare.com"
+    },
+    {
+      "id": 6,
+      "name": "Dr. Reddy's Laboratories",
+      "logoUrl": "/images/partners/dr-reddys.svg",
+      "altText": "Dr. Reddy's Laboratories - Pharmaceutical company",
+      "category": "pharma",
+      "websiteUrl": "https://www.drreddys.com"
+    },
+    {
+      "id": 7,
+      "name": "GE Healthcare",
+      "logoUrl": "/images/partners/ge-healthcare.svg",
+      "altText": "GE Healthcare - Medical technology and digital solutions",
+      "category": "equipment",
+      "websiteUrl": "https://www.gehealthcare.com"
+    },
+    {
+      "id": 8,
+      "name": "Johns Hopkins Medicine",
+      "logoUrl": "/images/partners/johns-hopkins.svg",
+      "altText": "Johns Hopkins Medicine - Academic medical center",
+      "category": "institution",
+      "websiteUrl": "https://www.hopkinsmedicine.org"
+    }
+  ]
+}

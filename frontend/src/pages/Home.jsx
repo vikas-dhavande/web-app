@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HeroSection from '../components/home/HeroSection';
 import StatsSection from '../components/home/StatsSection';
-
+import PartnersCarousel from '../components/PartnersCarousel';
 const Home = () => {
+    const [partners, setPartners] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    // Fetch partners from API
+    useEffect(() => {
+        const fetchPartners = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch('http://localhost:5000/api/partners');
+                const data = await response.json();
+
+                if (data.success && data.enabled) {
+                    setPartners(data.data);
+                }
+            } catch (err) {
+                console.error('Error fetching partners:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPartners();
+    }, []);
+
     return (
         <div className="bg-[#f1f3f6] dark:bg-[#0d1117] min-h-screen pt-[130px] md:pt-[120px]">
             {/* 1. New Hero Section */}
@@ -11,7 +35,16 @@ const Home = () => {
             {/* 2. Stats Section */}
             <StatsSection />
 
-            {/* 3. Feature Cards (Existing/Refined) */}
+            {/* 3. Partners Carousel */}
+            {!loading && partners.length > 0 && (
+                <PartnersCarousel
+                    title="Trusted By Leading Healthcare Organizations"
+                    autoScrollSpeed={3000}
+                    logos={partners}
+                />
+            )}
+
+            {/* 4. Feature Cards (Existing/Refined) */}
             <div className="container mx-auto px-4 max-w-[1440px] py-16">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Pharma Card */}

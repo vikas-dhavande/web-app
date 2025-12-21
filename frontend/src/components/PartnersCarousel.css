@@ -1,0 +1,297 @@
+/* ============================================
+   PARTNERS CAROUSEL - PROFESSIONAL MEDICAL DESIGN
+   ============================================ */
+
+/* Section Container */
+.partners-carousel-section {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 80px 20px;
+  overflow: hidden;
+}
+
+.partners-carousel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.partners-carousel-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.partners-carousel-title {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 20px 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.partners-carousel-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0066cc, #00a8e8);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+/* Carousel Wrapper */
+.partners-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  outline: none;
+}
+
+/* Logo Track Container */
+.partners-carousel-track-container {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.partners-carousel-track {
+  display: grid;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 0;
+}
+
+/* Individual Logo Wrapper */
+.partners-carousel-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 40px;
+  min-height: 120px;
+  transition: background-color 300ms ease;
+}
+
+.partners-carousel-logo-wrapper:hover {
+  background-color: #f8f9fa;
+}
+
+/* Logo Styling */
+.partners-carousel-logo {
+  max-width: 100%;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  
+  /* Grayscale by default */
+  filter: grayscale(100%) brightness(0.95) contrast(0.9);
+  opacity: 0.7;
+  transition: filter 400ms ease, opacity 400ms ease, transform 300ms ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Hover effect - full color */
+.partners-carousel-logo-wrapper:hover .partners-carousel-logo {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Navigation Arrows */
+.partners-carousel-arrow {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  background-color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 300ms ease;
+  color: #666666;
+  outline: none;
+  z-index: 10;
+}
+
+.partners-carousel-arrow:hover {
+  background-color: #0066cc;
+  border-color: #0066cc;
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.partners-carousel-arrow:active {
+  transform: scale(0.95);
+}
+
+.partners-carousel-arrow:focus-visible {
+  outline: 3px solid #0066cc;
+  outline-offset: 3px;
+}
+
+.partners-carousel-arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Pagination Dots */
+.partners-carousel-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.partners-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d4d4d4;
+  border: none;
+  cursor: pointer;
+  transition: all 300ms ease;
+  padding: 0;
+  outline: none;
+}
+
+.partners-carousel-dot:hover {
+  background-color: #999999;
+  transform: scale(1.2);
+}
+
+.partners-carousel-dot.active {
+  background-color: #0066cc;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.partners-carousel-dot:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 3px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .partners-carousel-section {
+    padding: 60px 15px;
+  }
+
+  .partners-carousel-header {
+    margin-bottom: 40px;
+  }
+
+  .partners-carousel-logo-wrapper {
+    padding: 25px 30px;
+    min-height: 100px;
+  }
+
+  .partners-carousel-logo {
+    max-height: 70px;
+  }
+
+  .partners-carousel-arrow {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .partners-carousel-section {
+    padding: 50px 10px;
+  }
+
+  .partners-carousel-container {
+    padding: 0 10px;
+  }
+
+  .partners-carousel-header {
+    margin-bottom: 30px;
+  }
+
+  .partners-carousel-wrapper {
+    gap: 10px;
+  }
+
+  .partners-carousel-logo-wrapper {
+    padding: 20px;
+    min-height: 90px;
+  }
+
+  .partners-carousel-logo {
+    max-height: 60px;
+  }
+
+  .partners-carousel-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .partners-carousel-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .partners-carousel-pagination {
+    margin-top: 30px;
+    gap: 8px;
+  }
+
+  .partners-carousel-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .partners-carousel-dot.active {
+    width: 24px;
+  }
+}
+
+/* Touch device optimization */
+@media (hover: none) and (pointer: coarse) {
+  .partners-carousel-arrow {
+    /* Larger touch targets on mobile */
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .partners-carousel-logo-wrapper:hover {
+    background-color: transparent;
+  }
+
+  /* Keep some hover effect on tap */
+  .partners-carousel-logo-wrapper:active .partners-carousel-logo {
+    filter: grayscale(0%) brightness(1) contrast(1);
+    opacity: 1;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .partners-carousel-track,
+  .partners-carousel-logo,
+  .partners-carousel-arrow,
+  .partners-carousel-dot {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .partners-carousel-arrow {
+    border-width: 3px;
+  }
+
+  .partners-carousel-logo {
+    filter: grayscale(100%) brightness(1) contrast(1.2);
+  }
+}

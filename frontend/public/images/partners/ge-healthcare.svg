@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100" width="280" height="100">
+  <!-- Background -->
+  <rect width="280" height="100" fill="transparent"/>
+  
+  <!-- GE Monogram circle -->
+  <circle cx="40" cy="50" r="28" fill="#0f62ac" opacity="0.15"/>
+  <text x="40" y="62" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#0f62ac" text-anchor="middle">GE</text>
+  
+  <!-- Text -->
+  <text x="85" y="60" font-family="Arial, sans-serif" font-size="28" font-weight="normal" fill="#0f62ac">Healthcare</text>
+</svg>
