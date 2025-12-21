@@ -4,6 +4,7 @@ import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
 import SignInModal from './components/auth/SignInModal';
+import EShop from './pages/EShop';
 import ProfileLayout from './components/profile/ProfileLayout';
 import BasicProfile from './components/profile/BasicProfile';
 import RoleSelection from './components/profile/RoleSelection';
@@ -23,6 +24,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/eshop" element={<EShop />} />
 
             {/* Profile Routes */}
             <Route path="/profile" element={<ProfileLayout />}>

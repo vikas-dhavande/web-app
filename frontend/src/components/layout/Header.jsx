@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { FaBars, FaMoon, FaSun, FaBell } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaBars, FaMoon, FaSun, FaBell, FaSearch, FaShoppingCart, FaUser, FaStore } from 'react-icons/fa';
 import MobileMenu from './MobileMenu';
 
 const Header = ({ onOpenSignin }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const savedTheme = localStorage.getItem('theme');
@@ -21,7 +22,7 @@ const Header = ({ onOpenSignin }) => {
     }, []);
 
     const toggleMenu = () => {
-        setIsMenuOpen(true); // Always open drawer
+        setIsMenuOpen(true);
     };
 
     const toggleTheme = () => {
@@ -32,67 +33,68 @@ const Header = ({ onOpenSignin }) => {
         localStorage.setItem('theme', theme);
     };
 
-    const openNotifications = () => {
-        console.log("Notifications clicked");
-    };
-
     return (
-        <header className="site-header">
-            <div className="header-inner">
-                <div className="header-left">
-                    <div className="menu-toggle" onClick={toggleMenu}>
+        <header className="fixed top-0 left-0 w-full z-50 bg-[#4169E1] shadow-md h-[70px]">
+            <div className="container mx-auto px-4 h-full flex items-center justify-between gap-6 max-w-[1400px]">
+
+                {/* 1. Logo Section */}
+                <div className="flex items-center gap-3">
+                    <div className="text-white text-xl cursor-pointer lg:hidden" onClick={toggleMenu}>
                         <FaBars />
                     </div>
-                    <Link to="/" className="logo">MEDPORTAL</Link>
+                    <Link to="/" className="text-white text-2xl font-bold italic tracking-wider flex flex-col leading-none">
+                        <span>MEDPORTAL</span>
+                        <span className="text-[10px] font-normal not-italic text-yellow-300 tracking-widest">+ EXPLORE PLUS</span>
+                    </Link>
                 </div>
 
-                <div className="header-center">
-                    <nav>
-                        {/* Desktop Menu - Hidden on Mobile via CSS */}
-                        <ul className="nav-menu">
-                            <li className="nav-item">
-                                <Link to="#" className="nav-link">Hospitals</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="#" className="nav-link">Pharma</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="#" className="nav-link">Colleges</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="#" className="nav-link">Blog</Link>
-                            </li>
-                        </ul>
-                    </nav>
-
-
+                {/* 2. Search Bar (Hidden on mobile, large on desktop) */}
+                <div className="flex-1 max-w-2xl hidden lg:block relative">
+                    <input
+                        type="text"
+                        placeholder="Search for medicines, hospitals, and more"
+                        className="w-full h-10 pl-4 pr-10 rounded-[2px] border-none outline-none text-gray-800 text-sm shadow-sm"
+                    />
+                    <FaSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#4169E1] text-lg cursor-pointer" />
                 </div>
 
-                <div className="header-right">
+                {/* 3. Action Links */}
+                <div className="flex items-center gap-6 md:gap-8">
+
+                    {/* Login Button (White Box) */}
                     <button
-                        className="action-btn icon-btn"
-                        onClick={toggleTheme}
-                        aria-label="Toggle Dark Mode"
+                        onClick={onOpenSignin}
+                        className="bg-white text-[#4169E1] font-semibold px-8 py-1 rounded-[2px] transition-transform hover:bg-gray-50 hidden md:block"
                     >
+                        Login
+                    </button>
+
+                    <Link to="/eshop" className="text-white font-semibold text-base whitespace-nowrap hidden md:block hover:text-gray-100">
+                        Become a Seller
+                    </Link>
+
+                    {/* Navigation Dropdown Placeholder (e.g. More) */}
+                    <div className="relative group cursor-pointer hidden md:block text-white font-semibold">
+                        <span>More</span>
+                        {/* Dropdown Content would go here */}
+                    </div>
+
+                    {/* Cart */}
+                    <Link to="/cart" className="flex items-center gap-2 text-white font-semibold group">
+                        <FaShoppingCart className="text-xl" />
+                        <span className="hidden md:block">Cart</span>
+                        <div className="absolute -top-1 -right-2 md:hidden bg-yellow-400 text-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</div>
+                    </Link>
+
+                    {/* Dark Mode Toggle (Optional in this premium layout, keeping small) */}
+                    <button onClick={toggleTheme} className="text-white text-lg opacity-80 hover:opacity-100">
                         {darkMode ? <FaSun /> : <FaMoon />}
-                    </button>
-
-                    <button
-                        className="action-btn icon-btn"
-                        onClick={openNotifications}
-                        aria-label="Notifications"
-                    >
-                        <FaBell />
-                        <span className="notification-dot"></span>
-                    </button>
-
-                    <button className="btn-login" onClick={onOpenSignin}>
-                        Sign In
                     </button>
                 </div>
             </div>
 
-            {/* Mobile Navigation Drawer */}
+            {/* Mobile Search Bar (Visible only on mobile below header if needed, or in drawer) - Keeping simple for now */}
+
             <MobileMenu
                 isOpen={isMenuOpen}
                 onClose={() => setIsMenuOpen(false)}
