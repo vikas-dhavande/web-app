@@ -1,4 +1,4 @@
-import { account } from '../config/appwrite.config';
+import { account, functions } from '../config/appwrite.config';
 import { ID } from 'appwrite';
 
 /**
@@ -362,25 +362,31 @@ class AuthService {
      * @param {string} role - Role to request (e.g., 'doctor')
      * @param {string} secret - Admin Secret (For demo/testing, usually handled via auth)
      */
-    async requestRole(role, secret) {
+    async requestRole(role) {
         try {
             const user = await this.getCurrentUser();
             if (!user) throw new Error("User not logged in");
 
-            const response = await fetch('http://localhost:5000/api/admin/set-role', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    userId: user.$id,
-                    role,
-                    secret // In real app, use proper auth logic
-                })
-            });
+            const functionId = import.meta.env.VITE_APPWRITE_FUNCTION_MANAGE_ROLES_ID;
+            if (!functionId) {
+                console.warn("Function ID not configured");
+                throw new Error("Service Configuration Error");
+            }
 
-            const data = await response.json();
-            if (!response.ok) throw new Error(data.message || 'Failed to set role');
+            const execution = await functions.createExecution(
+                functionId,
+                JSON.stringify({
+                    userId: user.$id,
+                    role
+                })
+            );
+
+            if (execution.status === 'failed') {
+                throw new Error(execution.response || 'Function execution failed');
+            }
+
+            const data = JSON.parse(execution.responseBody);
+            if (!data.success) throw new Error(data.message || 'Failed to set role');
 
             return data;
         } catch (error) {
