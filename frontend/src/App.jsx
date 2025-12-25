@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -18,38 +19,40 @@ function App() {
   const [isSigninOpen, setIsSigninOpen] = useState(false);
 
   return (
-    <Router>
-      <div className="app-container">
-        <Header onOpenSignin={() => setIsSigninOpen(true)} />
+    <AuthProvider>
+      <Router>
+        <div className="app-container">
+          <Header onOpenSignin={() => setIsSigninOpen(true)} />
 
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/eshop" element={<EShop />} />
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/eshop" element={<EShop />} />
 
-            {/* Profile Routes */}
-            <Route path="/profile" element={<ProfileLayout />}>
-              <Route index element={<BasicProfile />} />
-              <Route path="roles" element={<RoleSelection />} />
-              <Route path="verify/doctor" element={<DoctorForm />} />
-              <Route path="verify/hospital" element={<HospitalForm />} />
-              <Route path="verify/lab" element={<LabForm />} />
-              <Route path="settings" element={<div style={{ padding: '20px', color: 'var(--text-color)' }}>Settings Placeholder</div>} />
-            </Route>
-          </Routes>
-        </main>
+              {/* Profile Routes */}
+              <Route path="/profile" element={<ProfileLayout />}>
+                <Route index element={<BasicProfile />} />
+                <Route path="roles" element={<RoleSelection />} />
+                <Route path="verify/doctor" element={<DoctorForm />} />
+                <Route path="verify/hospital" element={<HospitalForm />} />
+                <Route path="verify/lab" element={<LabForm />} />
+                <Route path="settings" element={<div style={{ padding: '20px', color: 'var(--text-color)' }}>Settings Placeholder</div>} />
+              </Route>
+            </Routes>
+          </main>
 
-        <Footer />
+          <Footer />
 
-        <SignInModal
-          isOpen={isSigninOpen}
-          onClose={() => setIsSigninOpen(false)}
-        />
+          <SignInModal
+            isOpen={isSigninOpen}
+            onClose={() => setIsSigninOpen(false)}
+          />
 
-        {/* Floating Chat - Visible on all pages */}
-        <FloatingChat />
-      </div>
-    </Router>
+          {/* Floating Chat - Visible on all pages */}
+          <FloatingChat />
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

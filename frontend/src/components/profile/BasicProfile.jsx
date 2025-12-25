@@ -1,22 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../context/AuthContext';
+import DBService from '../../services/db.service';
 
 const BasicProfile = () => {
+    const { user } = useAuth();
+    const [loading, setLoading] = useState(true);
     const [formData, setFormData] = useState({
-        fullName: 'John Doe',
-        email: 'john@example.com',
+        fullName: '',
+        email: '',
         phone: '',
         address: ''
     });
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            if (user) {
+                setLoading(true);
+                try {
+                    const profileData = await DBService.getProfile(user.$id);
+                    setFormData({
+                        fullName: profileData.fullName || user.name, // Fallback to auth name
+                        email: user.email,
+                        phone: profileData.phoneNumber || '',
+                        address: profileData.address || ''
+                    });
+                } catch (error) {
+                    console.error("Failed to load profile", error);
+                } finally {
+                    setLoading(false);
+                }
+            }
+        };
+
+        fetchProfile();
+    }, [user]);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Updating profile:", formData);
-        // API call to update profile would go here
+        try {
+            await DBService.updateProfile(user.$id, {
+                fullName: formData.fullName,
+                phoneNumber: formData.phone,
+                address: formData.address
+            });
+            alert('Profile updated successfully!');
+        } catch (error) {
+            console.error("Profile update failed", error);
+            alert('Failed to update profile.');
+        }
     };
+
+    if (loading) return <div>Loading Profile...</div>;
 
     return (
         <div className="basic-profile">

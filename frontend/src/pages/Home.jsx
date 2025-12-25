@@ -2,21 +2,19 @@ import React, { useState, useEffect } from 'react';
 import HeroSection from '../components/home/HeroSection';
 import StatsSection from '../components/home/StatsSection';
 import PartnersCarousel from '../components/PartnersCarousel';
+import ContentService from '../services/content.service';
+
 const Home = () => {
     const [partners, setPartners] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Fetch partners from API
+    // Fetch partners from Service (Appwrite/Mock)
     useEffect(() => {
         const fetchPartners = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('http://localhost:5000/api/partners');
-                const data = await response.json();
-
-                if (data.success && data.enabled) {
-                    setPartners(data.data);
-                }
+                const data = await ContentService.getPartners();
+                setPartners(data);
             } catch (err) {
                 console.error('Error fetching partners:', err);
             } finally {

@@ -1,14 +1,9 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const connectDB = require('./src/config/db');
 
 // Load config
 dotenv.config();
-
-// Connect Database (Skipped for Mock Mode)
-// connectDB();
-console.log('Mock Database Mode: Using local JSON file for persistence');
 
 const app = express();
 
@@ -18,19 +13,14 @@ app.use(cors());
 
 // Basic Route
 app.get('/', (req, res) => {
-    res.send('API is running...');
+    res.send('API is running... (Appwrite Admin Mode)');
 });
 
 // Import Routes
-const authRoutes = require('./src/modules/core/routes/authRoutes');
-const profileRoutes = require('./src/modules/core/routes/profileRoutes');
-const statsRoutes = require('./src/modules/core/routes/statsRoutes');
-const partnersRoutes = require('./src/modules/core/routes/partnersRoutes');
+const adminRoutes = require('./src/modules/admin/routes/adminRoutes');
 
-app.use('/api/auth', authRoutes);
-app.use('/api/profile', profileRoutes);
-app.use('/api/stats', statsRoutes);
-app.use('/api', partnersRoutes);
+// Mount Admin Routes
+app.use('/api/admin', adminRoutes);
 
 const PORT = process.env.PORT || 5000;
 

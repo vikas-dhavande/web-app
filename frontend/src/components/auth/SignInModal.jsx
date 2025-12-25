@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { FaTimes, FaGoogle, FaFacebookF, FaLinkedinIn, FaApple, FaWindows, FaEye } from 'react-icons/fa';
-
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const SignInModal = ({ isOpen, onClose }) => {
     const navigate = useNavigate();
+    const { login } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
 
     const [email, setEmail] = useState('');
@@ -26,26 +27,11 @@ const SignInModal = ({ isOpen, onClose }) => {
         setError('');
 
         try {
-            const res = await fetch('http://localhost:5000/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
-
-            const data = await res.json();
-
-            if (res.ok) {
-                // alert(`Welcome back, ${data.name}!`); 
-                localStorage.setItem('token', data.token); // Store token
-                onClose();
-                navigate('/profile');
-            } else {
-                setError(data.message || 'Login failed');
-            }
+            await login({ email, password });
+            onClose();
+            navigate('/profile');
         } catch (err) {
-            setError('Network error. Please try again.');
+            setError(err.message || 'Login failed. Please check your credentials.');
         } finally {
             setLoading(false);
         }
