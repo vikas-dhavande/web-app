@@ -1,0 +1,10 @@
+{
+    "name": "manage-roles",
+    "version": "1.0.0",
+    "description": "Appwrite Function to assign user roles",
+    "main": "src/main.js",
+    "type": "module",
+    "dependencies": {
+        "node-appwrite": "^12.0.0"
+    }
+}
