@@ -6,6 +6,40 @@ class DBService {
     constructor() {
         this.dbId = appwriteConfig.databaseId;
         this.usersCollection = appwriteConfig.collections.users;
+        this.medicalRecordsCollection = import.meta.env.VITE_APPWRITE_MEDICAL_RECORDS_COLLECTION_ID;
+        this.postsCollection = 'posts'; // Hardcoded for now if not in env
+    }
+
+    async createPost(postData) {
+        try {
+            return await databases.createDocument(
+                this.dbId,
+                this.postsCollection,
+                ID.unique(),
+                postData
+            );
+        } catch (error) {
+            console.error('❌ Create Post Error:', error);
+            throw error;
+        }
+    }
+
+    async getPosts(userId = null) {
+        try {
+            const queries = [Query.orderDesc('$createdAt'), Query.limit(20)];
+            if (userId) {
+                queries.push(Query.equal('userId', userId));
+            }
+            const response = await databases.listDocuments(
+                this.dbId,
+                this.postsCollection,
+                queries
+            );
+            return response.documents;
+        } catch (error) {
+            console.error('❌ Get Posts Error:', error);
+            return [];
+        }
     }
 
     /**
@@ -104,6 +138,23 @@ class DBService {
             photoUrl: null,
             completionStatus: 0
         };
+    }
+
+    async getUsers() {
+        try {
+            if (!this.dbId || !this.usersCollection) {
+                return [];
+            }
+            const response = await databases.listDocuments(
+                this.dbId,
+                this.usersCollection,
+                [Query.limit(50)]
+            );
+            return response.documents;
+        } catch (error) {
+            console.error('❌ Get Users Error:', error);
+            return [];
+        }
     }
 }
 

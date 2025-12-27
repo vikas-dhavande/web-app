@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { FaSearch, FaUser, FaShoppingCart, FaBell, FaBars } from 'react-icons/fa';
 import { headerConfig } from '../../config/headerConfig';
 import ThemeToggle from '../common/ThemeToggle';
+import { useAuth } from '../../context/AuthContext';
 
 const TopHeader = ({ onOpenSignin, toggleMenu }) => {
+    const { user } = useAuth();
     const [placeholderIndex, setPlaceholderIndex] = useState(0);
 
     // Rotating Placeholder Logic
@@ -49,27 +51,60 @@ const TopHeader = ({ onOpenSignin, toggleMenu }) => {
                 </div>
 
                 {/* 3. Right Actions */}
-                <div className="flex items-center gap-6">
-                    {/* Theme Toggle (Between Search and Account) */}
-                    <div className="hidden md:block">
+                <div className="flex items-center gap-4 md:gap-6">
+                    {/* Theme Toggle */}
+                    <div className="hidden sm:block">
                         <ThemeToggle />
                     </div>
 
-                    {/* User Profile / Login */}
-                    <div className="flex items-center gap-2 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors" onClick={onOpenSignin}>
-                        <div className="w-10 h-10 rounded-full bg-blue-50 dark:bg-slate-700 flex items-center justify-center text-blue-600 dark:text-blue-400">
-                            <FaUser />
-                        </div>
-                        <div className="hidden lg:block">
-                            <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Account</p>
-                            <p className="text-sm font-semibold text-slate-800 dark:text-white">Login / Signup</p>
-                        </div>
-                    </div>
+                    {/* Notification Icon */}
+                    <button className="relative text-gray-500 hover:text-blue-600 transition-colors">
+                        <FaBell className="text-xl" />
+                        <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                    </button>
 
-                    {/* Cart (Optional) */}
-                    <Link to="/cart" className="relative text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    {/* User Profile / Login */}
+                    {user ? (
+                        <div className="flex items-center gap-3 pl-2 border-l border-gray-100 dark:border-slate-700">
+                            <Link to="/profile" className="flex items-center gap-3 group">
+                                <div className="hidden md:block text-right">
+                                    <p className="text-sm font-bold text-slate-800 dark:text-white leading-none mb-1 group-hover:text-blue-600">
+                                        {user.name}
+                                    </p>
+                                    <p className="text-[10px] text-gray-500 dark:text-gray-400 font-medium uppercase tracking-wider">
+                                        {user.prefs?.role || 'Patient'}
+                                    </p>
+                                </div>
+                                <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-slate-700 overflow-hidden ring-2 ring-transparent group-hover:ring-blue-500 transition-all">
+                                    {user.prefs?.avatarUrl ? (
+                                        <img src={user.prefs.avatarUrl} alt={user.name} className="w-full h-full object-cover" />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center text-blue-600 font-bold">
+                                            {user.name.charAt(0)}
+                                        </div>
+                                    )}
+                                </div>
+                            </Link>
+                        </div>
+                    ) : (
+                        <div
+                            className="flex items-center gap-2 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                            onClick={onOpenSignin}
+                        >
+                            <div className="w-10 h-10 rounded-full bg-blue-50 dark:bg-slate-700 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                                <FaUser />
+                            </div>
+                            <div className="hidden lg:block">
+                                <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Account</p>
+                                <p className="text-sm font-semibold text-slate-800 dark:text-white">Login / Signup</p>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Cart */}
+                    <Link to="/cart" className="relative text-gray-500 hover:text-blue-600 transition-colors hidden sm:block">
                         <FaShoppingCart className="text-xl" />
-                        <span className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white text-[10px] flex items-center justify-center rounded-full font-bold shadow-sm">0</span>
+                        <span className="absolute -top-2 -right-2 w-5 h-5 bg-blue-600 text-white text-[10px] flex items-center justify-center rounded-full font-bold shadow-sm">0</span>
                     </Link>
                 </div>
             </div>

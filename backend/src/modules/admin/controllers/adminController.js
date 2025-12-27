@@ -1,4 +1,4 @@
-const { users, teams } = require('../../../../config/appwrite');
+const { users, teams } = require('../../../config/appwrite');
 
 /**
  * Admin Controller

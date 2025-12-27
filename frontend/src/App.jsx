@@ -32,6 +32,7 @@ function App() {
               {/* Profile Routes */}
               <Route path="/profile" element={<ProfileLayout />}>
                 <Route index element={<BasicProfile />} />
+                <Route path=":userId" element={<BasicProfile />} />
                 <Route path="roles" element={<RoleSelection />} />
                 <Route path="verify/doctor" element={<DoctorForm />} />
                 <Route path="verify/hospital" element={<HospitalForm />} />

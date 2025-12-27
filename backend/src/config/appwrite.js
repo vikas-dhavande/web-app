@@ -1,4 +1,4 @@
-const { Client, Users, Databases } = require('node-appwrite');
+const { Client, Users, Databases, Teams } = require('node-appwrite');
 
 const client = new Client()
     .setEndpoint(process.env.VITE_APPWRITE_ENDPOINT)
@@ -7,5 +7,6 @@ const client = new Client()
 
 const users = new Users(client);
 const databases = new Databases(client);
+const teams = new Teams(client);
 
-module.exports = { client, users, databases };
+module.exports = { client, users, databases, teams };
