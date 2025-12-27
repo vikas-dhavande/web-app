@@ -3,6 +3,8 @@ import HeroSection from '../components/home/HeroSection';
 import StatsSection from '../components/home/StatsSection';
 import PartnersCarousel from '../components/PartnersCarousel';
 import ContentService from '../services/content.service';
+import AllSpecialties from '../components/specialties/AllSpecialties';
+import TopHospitals from '../components/hospitals/TopHospitals';
 
 const Home = () => {
     const [partners, setPartners] = useState([]);
@@ -41,6 +43,12 @@ const Home = () => {
                     logos={partners}
                 />
             )}
+
+            {/* 4. Specialties Section */}
+            <AllSpecialties />
+
+            {/* 5. Top Hospitals Section */}
+            <TopHospitals />
 
             {/* 4. Feature Cards (Existing/Refined) */}
             <div className="container mx-auto px-4 max-w-[1440px] py-16">

@@ -66,17 +66,17 @@ export const appwriteConfig = {
   endpoint: config.endpoint,
   projectId: config.projectId,
   projectName: import.meta.env.VITE_APPWRITE_PROJECT_NAME || 'medicoapp',
-  
+
   // Database configuration
   databaseId: import.meta.env.VITE_APPWRITE_DATABASE_ID,
-  
+
   // Collection IDs
   collections: {
     users: import.meta.env.VITE_APPWRITE_USERS_COLLECTION_ID,
     appointments: import.meta.env.VITE_APPWRITE_APPOINTMENTS_COLLECTION_ID,
     medicalRecords: import.meta.env.VITE_APPWRITE_MEDICAL_RECORDS_COLLECTION_ID,
   },
-  
+
   // Storage Bucket IDs
   buckets: {
     profilePictures: import.meta.env.VITE_APPWRITE_PROFILE_PICTURES_BUCKET_ID,
@@ -106,3 +106,8 @@ export const checkAppwriteConnection = async () => {
 
 // Export the client for advanced usage
 export default client;
+
+// Auto-check connection in development
+if (import.meta.env.DEV) {
+  checkAppwriteConnection();
+}
