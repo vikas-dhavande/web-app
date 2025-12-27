@@ -26,18 +26,20 @@ async function createPostsCollection() {
 
         // 2. Define Attributes
         const stringAttrs = [
-            { key: 'userId', size: 100, required: true },
-            { key: 'name', size: 100, required: false },
-            { key: 'username', size: 100, required: false },
-            { key: 'community', size: 50, required: false },
-            { key: 'title', size: 500, required: true },
-            { key: 'content', size: 5000, required: false },
-            { key: 'imageUrl', size: 1000, required: false },
+            { key: 'title', size: 255, required: true },
+            { key: 'content', size: 50000, required: false }, // Markdown content
+            { key: 'thumbnailId', size: 255, required: false },
+            { key: 'authorId', size: 36, required: true },
+            { key: 'authorName', size: 128, required: false },
+            { key: 'publishedAt', size: 64, required: false },
         ];
 
         const intAttrs = [
-            { key: 'upvotes', min: -1000000, required: false, default: 0 },
-            { key: 'commentsCount', min: 0, required: false, default: 0 },
+            { key: 'likesCount', min: 0, required: false, default: 0 },
+        ];
+
+        const arrayAttrs = [
+            { key: 'likedBy', size: 36, required: false } // Array of user IDs
         ];
 
         for (const attr of stringAttrs) {
@@ -57,6 +59,23 @@ async function createPostsCollection() {
             } catch (e) {
                 if (e.code === 409) console.log(`ℹ️ Attribute "${attr.key}" already exists.`);
                 else console.error(`❌ Error creating attribute ${attr.key}:`, e.message);
+            }
+        }
+
+        // 3. String Array Attributes
+        if (typeof arrayAttrs !== 'undefined') {
+            for (const attr of arrayAttrs) {
+                try {
+                    // createStringAttribute with array=true (last param? No, array is set via type usually or specific method? 
+                    // node-appwrite uses createStringAttribute(databaseId, collectionId, key, size, required, default, array)
+                    // Let's check signature. 
+                    // Actually createStringAttribute(databaseId, collectionId, key, size, required, default, array)
+                    await databases.createStringAttribute(databaseId, collectionId, attr.key, attr.size, attr.required, undefined, true);
+                    console.log(`✅ String Array Attribute created: ${attr.key}`);
+                } catch (e) {
+                    if (e.code === 409) console.log(`ℹ️ Attribute "${attr.key}" already exists.`);
+                    else console.error(`❌ Error creating attribute ${attr.key}:`, e.message);
+                }
             }
         }
 
