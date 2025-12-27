@@ -93,3 +93,73 @@ For verified users (Doctors, Hospitals, Clinics):
 
 ## 🗂 Project Structure (Planned)
 
+frontend/
+├── app/
+├── components/
+├── data/
+├── styles/
+├── utils/
+└── services/
+
+backend/
+└── Appwrite (Auth, DB, Storage)
+
+---
+
+## 🚀 Development Roadmap
+
+### Phase 1 – Foundation
+- Appwrite setup
+- Authentication
+- Clean UI layout
+- Blog system (basic)
+
+### Phase 2 – Medical Listings
+- Hospitals
+- Clinics
+- Doctors
+- Colleges
+- Search & filters
+
+### Phase 3 – Dashboards
+- User profile system
+- Doctor/Hospital verification
+- Admin panel
+
+### Phase 4 – Expansion
+- Appointments
+- Notifications
+- Analytics
+- Mobile app (future)
+
+---
+
+## 🔒 Security & Privacy
+- Secure authentication
+- Role-based access
+- Verified medical professionals
+- No public access to sensitive data
+
+---
+
+## 🤝 Contribution
+This project is actively evolving.  
+Contributions, suggestions, and improvements are welcome.
+
+---
+
+## 📌 Status
+🚧 **Under active development**  
+Architecture & core systems are being finalized.
+
+---
+
+## 📄 License
+MIT License (Planned)
+
+---
+
+## 🙌 Author
+**Vikas**  
+Maintenance Engineer | Embedded & Full-Stack Enthusiast  
+Building scalable tech solutions for healthcare 🚀
